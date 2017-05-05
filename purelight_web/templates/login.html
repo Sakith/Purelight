@@ -1,0 +1,47 @@
+{% extends "header.html" %}
+{% load static from staticfiles %}
+{% block content %}
+
+
+<div class="panel panel-default">
+
+    <div class="panel-body">
+        <div class="login-box">
+            <!-- login form -->
+            <form action="#" method="post" class="sky-form boxed"> {% csrf_token %}
+                <header>Healer Login</header>
+
+
+                <fieldset>
+
+                    <div>
+                        <label class="label">E-mail</label>
+                        <label class="input">
+                            <input name="email" type="email">
+                            <span class="tooltip tooltip-top-right">Email Address</span>
+                        </label>
+                    </div>
+
+                    <div>
+                        <label class="label">Password</label>
+                        <label class="input">
+                            <input name="password" type="password">
+                            <b class="tooltip tooltip-top-right">Type your Password</b>
+                        </label>
+                    </div>
+
+                    <hr>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </div>
+                    <div class="text-white padding-top-10">
+                        Forgot Username or Password
+                    </div>
+
+                </fieldset>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

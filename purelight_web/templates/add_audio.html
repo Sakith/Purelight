@@ -1,0 +1,183 @@
+{% extends "header.html" %}
+{% load static from staticfiles %}
+{% block content %}
+<div class="panel panel-default">
+
+    <div class="panel-body">
+        <div class="padding-bottom-20" align="center">
+            <button type="button" class="btn btn-primary">Add Audio</button>
+        </div>
+
+        <form class="validate" action="php/contact.php" method="post" enctype="multipart/form-data"
+              data-success="Sent! Thank you!" data-toastr-position="top-right" novalidate="novalidate">
+            <fieldset>
+
+
+                <div class="row">
+                    <div class="col-md-12"><span class="text-red text-18"> <strong>*</strong></span>= Required</div>
+                    <div class="form-group">
+                        <div align="center" class="col-md-3 col-sm-3">
+                            <img src="{%static '/assets/images/profile-thumb.jpg' %}">
+                            <h4>Change image</h4>
+                            Square, preferably 150 x 150px of larger, if you don't have one, just use your photo
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <label><span class="text-red">*</span>Title</label>
+                            <input type="text" name="contact[last_name]" value="" class="form-control required">
+
+                            <br class="clearfix">
+                            <label><span class="text-red">*</span>Category</label>
+                            <small>If your audio fits multiple categories, choose the category that best fits, then
+                                select keywords to represent the other categories. For more information, please view the
+                                categories guide
+                            </small>
+                            <select name="contact[position]" class="form-control pointer required">
+                                <option value="">--- Select ---</option>
+                                <option value="Category 01">Category 01</option>
+                                <option value="Category 02">Category 02</option>
+                                <option value="Category 03">Category 03</option>
+                                <option value="Category 04">Category 04</option>
+                            </select>
+                            <br class="clearfix">
+                            <label><span class="text-red">*</span>Teaser Description</label>
+                            <small>(80 characters or less; what the audio does and why people should be excited about
+                                it)
+                            </small>
+                            <input type="text" name="contact[last_name]" value="" class="form-control required">
+                            <br class="clearfix">
+                            <label><span class="text-red">*</span>Key Words</label>
+                            <small>(up tp 8, seperated by a comma)</small>
+                            <input type="text" name="contact[last_name]" value="" class="form-control required">
+
+
+                            <br class="clearfix">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Upload File
+                                    <small class="text-muted">mp3 format</small>
+                                </label>
+
+                                <!-- custom file upload -->
+                                <div class="fancy-file-upload fancy-file-primary">
+                                    <i class="fa fa-upload"></i>
+                                    <input type="file" class="form-control" name="contact[attachment]"
+                                           onchange="jQuery(this).next('input').val(this.value);">
+                                    <input type="text" class="form-control" placeholder="no file selected" readonly="">
+                                    <span class="button">Choose File</span>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+
+                            <div class="row">
+                                <div class="col-md-12 col-sm-12">
+                                    <label><span class="text-red">*</span>Duration</label>
+                                    <div class="row">
+                                        <div class="col-md-6"><input type="text" name="contact[last_name]" value=""
+                                                                     class="form-control required">min
+
+                                        </div>
+                                        <div class="col-md-6"><input type="text" name="contact[last_name]" value=""
+                                                                     class="form-control required">Sec
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-12"><label><span class="text-red">*</span>Price (USD)</label>
+                                            <input type="text" name="contact[last_name]" value=""
+                                                   class="form-control required"></div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9">
+                                    <label><span class="text-red">*</span>Full Description</label>
+                                    <textarea name="contact[experience]" rows="4"
+                                              class="form-control required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9">
+                                    <label><span class="text-red">*</span>How to Use</label>
+                                    <small>(how often to listen, can play on a loop, ok for sleep, requires acive
+                                        participation, etc)
+                                    </small>
+                                    <textarea name="contact[experience]" rows="4"
+                                              class="form-control required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9">
+                                    <label><span class="text-red">*</span>Full Description</label>
+                                    <textarea name="contact[experience]" rows="4"
+                                              class="form-control required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9">
+                                    <label><span class="text-red">*</span>Cautions</label>
+                                    <small>(may cause detox systoms, do not use while driving, etc)</small>
+                                    <textarea name="contact[experience]" rows="4"
+                                              class="form-control required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group">
+                                <div class="col-md-9 col-sm-9">
+                                    <label><span class="text-red">*</span>User Testimonials & Comments</label>
+                                    <textarea name="contact[experience]" rows="4"
+                                              class="form-control required"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+
+            </fieldset>
+
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-8" align="center">
+                    <button type="button" class="btn btn-info" formmethod="post">Save</button>
+                    <button type="button" class="btn btn-info" formmethod="post">Save & Publish</button>
+                    <button type="button" class="btn btn-info" formmethod="post">Cancel</button>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
+<!-- /----- -->
