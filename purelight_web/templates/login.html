@@ -1,5 +1,5 @@
 {% extends "header.html" %}
-{% load static from staticfiles %}
+{% load staticfiles %}
 {% block content %}
 
 
@@ -8,7 +8,7 @@
     <div class="panel-body">
         <div class="login-box">
             <!-- login form -->
-            <form action="#" method="post" class="sky-form boxed"> {% csrf_token %}
+            <form action="#" method="post" class="sky-form boxed" enctype="multipart/form-data"> {% csrf_token %}
                 <header>Healer Login</header>
 
 

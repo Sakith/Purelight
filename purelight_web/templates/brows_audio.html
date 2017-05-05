@@ -5,34 +5,34 @@
 
         <div class="panel-body">
 
-            <div class="container">
-                <h2>Bordered Table</h2>
+            <div class="contact-box">
+                <h2>Browse Media</h2>
                 <p>The .table-bordered class adds borders to a table:</p>
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
+                        <th>Title</th>
+                        <th>Teaser description</th>
+                        <th>How to use</th>
+                        <th>Edit detail</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>Doe</td>
-                        <td>john@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>Moe</td>
-                        <td>mary@example.com</td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>Dooley</td>
-                        <td>july@example.com</td>
-                    </tr>
-                    </tbody>
+                    {% for item in media %}
+                        <tr>
+                            <td>{{ item.title }}</td>
+                            <td>{{ item.teaserdescription }}</td>
+                            <td>{{ item.howtouse }}</td>
+                            <td>
+                                <form action="#" method="post" enctype="multipart/form-data"> {% csrf_token %}
+                                    <input type="hidden" name="item_title" value="{{ item.title }}">
+                                    <input name="submit"  type="button" class="btn btn-warning btn-sm" value="edit">
+                                </form>
+
+                            </td>
+                        </tr>
+                        </tbody>
+                    {% endfor %}
                 </table>
             </div>
 

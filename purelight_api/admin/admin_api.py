@@ -1,8 +1,7 @@
-from admin_serializer import *
 from rest_framework import viewsets
 from purelight.models import *
-import django_filters.rest_framework
-from rest_framework import generics
+from purelight_api.admin.admin_serializer import *
+
 
 class Admin_viewsets(viewsets.ModelViewSet):
     queryset = Admin.objects.all()

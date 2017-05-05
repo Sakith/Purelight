@@ -1,9 +1,11 @@
 runtime: python
 env: flex
 entrypoint: gunicorn -b :$PORT purelight.wsgi
+threadsafe: yes
 
 beta_settings:
-    cloud_sql_instances: purelight-165309:us-central1:purelight-mysqldb
-  
+    cloud_sql_instances: purelight-166404:us-central1:purelight
+
+
 runtime_config:
-  python_version: 2
+  python_version: 3

@@ -1,8 +1,5 @@
 from rest_framework.routers import DefaultRouter
-from admin_api import *
-from rest_framework import urls
-from django.conf.urls import url , include
-
+from purelight_api.admin.admin_api import *
 
 router = DefaultRouter()
 

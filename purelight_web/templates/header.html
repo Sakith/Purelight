@@ -49,7 +49,7 @@
 
             <!-- right -->
             <ul class="top-links list-inline pull-right">
-                <li class="text-welcome hidden-xs">Welcome to<strong> First Name</strong></li>
+                <li class="text-welcome hidden-xs">Welcome to<strong> {{ healer.healername }}</strong></li>
                 <li>
                     <button type="button" class="btn btn-info">Log Out</button>
 
@@ -154,8 +154,8 @@
 
 <!-- JAVASCRIPT FILES -->
 <script type="text/javascript">var plugin_path = "{% static 'assets/plugins/' %}";</script>
-<script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-2.2.3.min.js' %}"></script>
-<script type="text/javascript" src="{% static 'assets/js/scripts.js' %}"></script>
+<script type="text/javascript" src="{%static 'assets/plugins/jquery/jquery-2.2.3.min.js' %}"></script>
+<script type="text/javascript" src="{%static 'assets/js/scripts.js' %}"></script>
 
 
 </body>

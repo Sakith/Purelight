@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xfp3jfyhme8q9#n=rzm8svf22_g(#m^8$(t2jdwg=@eec0dwf_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Absolute paths for where the project and templates are stored.
@@ -89,13 +89,6 @@ TEMPLATES = [
     },
 ]
 
-STATICFILES_DIRS = (
-    '/home/sakith/Projects/PureLight/purelight/purelight/purelight_web/templates',
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-    )
-
 
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',)
@@ -109,31 +102,27 @@ WSGI_APPLICATION = 'purelight.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-import os
-if (os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine') or
-    os.getenv('SETTINGS_MODE') == 'prod'):
-    # Running on production App Engine, so use a Google Cloud SQL database.
-    DATABASES = {
-        'default': {
-            'ENGINE': 'google.appengine.ext.django.backends.rdbms',
-            'INSTANCE': 'purelight-165309:us-central1:purelight-mysqldb',
-            'NAME': 'purelightDB',
-            'USER': 'root',
-            'PASSWORD': '1234',
-        }
-    }
-else:
     # Running in development, so use a local MySQL database
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'USER': 'root',
-            'PASSWORD': '123',
-            'HOST': '127.0.0.1',
-            'NAME': 'purelightDB',
-            'PORT' : '3306',
-        }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': 'root',
+        'PASSWORD': '1234',
+        'HOST': '127.0.0.1',
+        'NAME': 'purelightDB',
+        'PORT': '3306',
     }
+}
+
+# In the flexible environment, you connect to CloudSQL using a unix socket.
+# Locally, you can use the CloudSQL proxy to proxy a localhost connection
+# to the instance
+
+DATABASES['default']['HOST'] = '/cloudsql/purelight-166404:us-central1:purelight'
+if os.getenv('GAE_INSTANCE'):
+    pass
+else:
+    DATABASES['default']['HOST'] = '127.0.0.1'
 
 
 # Password validation
@@ -179,13 +168,14 @@ STATICFILES_FINDERS = (
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
-STATIC_ROOT = '%s/static' % ABS_PROJECT_ROOT
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # Absolute filesystem path to the directory that will hold user-uploaded files.
-MEDIA_ROOT = '%s/media' % ABS_PROJECT_ROOT
+# MEDIA_ROOT = '%s/media' % ABS_PROJECT_ROOT
 
 # The URL that handles the media, static, etc.
 STATIC_URL = '/static/'
-MEDIA_URL = STATIC_URL + 'media/'
+# STATIC_URL = 'http://storage.googleapis.com/purelightbucket/static/'
+# MEDIA_URL = STATIC_URL + 'media/'
 
 # THE REST IS PRETTY MUCH DEFAULT
 

@@ -1,7 +1,24 @@
 from __future__ import unicode_literals
-
 from django.db import models
 
+
+class Role(models.Model):
+    roleid = models.AutoField(db_column='roleId', primary_key=True)  # Field name made lowercase.
+    userrolecol = models.CharField(db_column='UserRolecol', max_length=45, blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'Role'
+
+class User(models.Model):
+    userid = models.AutoField(db_column='userId', primary_key=True)  # Field name made lowercase.
+    name = models.CharField(db_column='Name', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    password = models.CharField(db_column='Password', max_length=45, blank=True, null=True)  # Field name made lowercase.
+    role_role_id = models.ForeignKey(Role, models.DO_NOTHING, db_column='Role_Role Id')  # Field name made lowercase. Field renamed to remove unsuitable characters.
+
+    class Meta:
+        managed = False
+        db_table = 'User'
 
 class Admin(models.Model):
     adminid = models.AutoField(db_column='adminId', primary_key=True)  # Field name made lowercase.
@@ -13,7 +30,6 @@ class Admin(models.Model):
     class Meta:
         managed = False
         db_table = 'Admin'
-
 
 class Customer(models.Model):
     customerid = models.AutoField(db_column='customerId', primary_key=True)  # Field name made lowercase.
@@ -27,28 +43,25 @@ class Customer(models.Model):
         managed = False
         db_table = 'Customer'
 
-
 class Downloaddetail(models.Model):
     media_mediaid = models.ForeignKey('Media', models.DO_NOTHING, db_column='Media_MediaId', primary_key=True)  # Field name made lowercase.
     download_count = models.IntegerField(db_column='Download_count', blank=True, null=True)  # Field name made lowercase.
-    search_count = models.IntegerField(db_column='Search_cont', blank=True, null=True)  # Field name made lowercase.
+    search_cont = models.IntegerField(db_column='Search_cont', blank=True, null=True)  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'DownloadDetail'
 
-
 class Healer(models.Model):
     healerid = models.AutoField(db_column='healerId', primary_key=True)  # Field name made lowercase.
     healerdiscription = models.CharField(db_column='HealerDiscription', max_length=1000, blank=True, null=True)  # Field name made lowercase.
     healerimageurl = models.CharField(db_column='HealerImageUrl', max_length=200, blank=True, null=True)  # Field name made lowercase.
-    healercol = models.CharField(db_column='Healercol', max_length=200, blank=True, null=True)  # Field name made lowercase.
+    healername = models.CharField(db_column='HealerName', max_length=200, blank=True, null=True)  # Field name made lowercase.
     user = models.ForeignKey('User', models.DO_NOTHING, db_column='User_id')  # Field name made lowercase.
 
     class Meta:
         managed = False
         db_table = 'Healer'
-
 
 class Media(models.Model):
     mediaid = models.AutoField(db_column='MediaId', primary_key=True)  # Field name made lowercase.
@@ -67,7 +80,6 @@ class Media(models.Model):
         managed = False
         db_table = 'Media'
 
-
 class Offers(models.Model):
     offerid = models.IntegerField(db_column='offerId', primary_key=True)  # Field name made lowercase.
     offername = models.CharField(db_column='OfferName', max_length=45, blank=True, null=True)  # Field name made lowercase.
@@ -76,7 +88,6 @@ class Offers(models.Model):
     class Meta:
         managed = False
         db_table = 'Offers'
-
 
 class Purchasedetail(models.Model):
     purchaseid = models.AutoField(db_column='purchaseId', primary_key=True)  # Field name made lowercase.
@@ -88,16 +99,6 @@ class Purchasedetail(models.Model):
         managed = False
         db_table = 'PurchaseDetail'
 
-
-class Role(models.Model):
-    roleid = models.AutoField(db_column='roleId', primary_key=True)  # Field name made lowercase.
-    userrolecol = models.CharField(db_column='UserRolecol', max_length=45, blank=True, null=True)  # Field name made lowercase.
-
-    class Meta:
-        managed = False
-        db_table = 'Role'
-
-
 class Track(models.Model):
     trackid = models.IntegerField(db_column='trackId', primary_key=True)  # Field name made lowercase.
     media_mediaid = models.ForeignKey(Media, models.DO_NOTHING, db_column='Media_MediaId')  # Field name made lowercase.
@@ -106,16 +107,5 @@ class Track(models.Model):
     duration = models.CharField(max_length=45, blank=True, null=True)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'Track'
-
-
-class User(models.Model):
-    userid = models.AutoField(db_column='userId', primary_key=True)  # Field name made lowercase.
-    name = models.CharField(db_column='Name', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    password = models.CharField(db_column='Password', max_length=45, blank=True, null=True)  # Field name made lowercase.
-    role_role_id = models.ForeignKey(Role, models.DO_NOTHING, db_column='Role_Role Id')  # Field name made lowercase. Field renamed to remove unsuitable characters.
-
-    class Meta:
-        managed = False
-        db_table = 'User'
