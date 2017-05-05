@@ -6,4 +6,4 @@ beta_settings:
     cloud_sql_instances: purelight-165309:us-central1:purelight-mysqldb
   
 runtime_config:
-  python_version: 2
+  python_version: 3
