@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'xfp3jfyhme8q9#n=rzm8svf22_g(#m^8$(t2jdwg=@eec0dwf_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*', '10.146.0.2', '10.146.0.3']
 
 
 # Absolute paths for where the project and templates are stored.
@@ -173,8 +173,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 # MEDIA_ROOT = '%s/media' % ABS_PROJECT_ROOT
 
 # The URL that handles the media, static, etc.
-STATIC_URL = '/static/'
-# STATIC_URL = 'http://storage.googleapis.com/purelightbucket/static/'
+# STATIC_URL = '/static/'
+STATIC_URL = 'http://storage.googleapis.com/purelightbucket/static/'
 # MEDIA_URL = STATIC_URL + 'media/'
 
 # THE REST IS PRETTY MUCH DEFAULT

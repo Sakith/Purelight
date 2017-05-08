@@ -4,7 +4,7 @@
     module.exports = factory();
   }
   else if(typeof define === 'function' && define.amd) {
-    define(['jquery', 'googlemaps!'], factory);
+    define(['jquery', 'googlemaps!purelight_web/templates/static/assets/plugins/gmaps'], factory);
   }
   else {
     root.GMaps = factory();
